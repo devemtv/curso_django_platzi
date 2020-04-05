@@ -1,40 +1,43 @@
-""" Posts views."""
+"""Posts views."""
 
 # Django
-from django.http import HttpResponse
+from django.shortcuts import render
 
-#Utilities
+# Utilities
 from datetime import datetime
 
-POSTS = [
+
+posts = [
     {
-        'name': 'Mont Blanc',
-        'user': 'Miguel Torrealba',
-        'timestamp': datetime.now().strftime('%d-%m-%Y %H:%M'),
-        'picture': 'https://i.picsum.photos/id/942/200/200.jpg',
+        'title': 'Mont Blanc',
+        'user': {
+            'name': 'Yésica Cortés',
+            'picture': 'https://picsum.photos/60/60/?image=1027'
+        },
+        'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M hrs'),
+        'photo': 'https://picsum.photos/800/600?image=1036',
     },
     {
-        'name': 'Mont Blanc',
-        'user': 'Miguel Torrealba',
-        'timestamp': datetime.now().strftime('%d-%m-%Y %H:%M'),
-        'picture': 'https://i.picsum.photos/id/942/200/200.jpg',
+        'title': 'Via Láctea',
+        'user': {
+            'name': 'Christian Van der Henst',
+            'picture': 'https://picsum.photos/60/60/?image=1005'
+        },
+        'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M hrs'),
+        'photo': 'https://picsum.photos/800/800/?image=903',
     },
     {
-        'name': 'Mont Blanc',
-        'user': 'Miguel Torrealba',
-        'timestamp': datetime.now().strftime('%d-%m-%Y %H:%M'),
-        'picture': 'https://i.picsum.photos/id/942/200/200.jpg',
+        'title': 'Nuevo auditorio',
+        'user': {
+            'name': 'Uriel (thespianartist)',
+            'picture': 'https://picsum.photos/60/60/?image=883'
+        },
+        'timestamp': datetime.now().strftime('%b %dth, %Y - %H:%M hrs'),
+        'photo': 'https://picsum.photos/500/700/?image=1076',
     }
 ]
 
 
 def list_posts(request):
-    """Lis existing posts."""
-    content = []
-    for post in POSTS:
-        content.append("""
-          <p><strong>{name}</strong></p>
-          <p><small>{user} - <i>{timestamp}</i></small></p>
-          <figure><img src="{picture}"></figure>
-        """.format(**post))
-    return HttpResponse('<br>'.join(content))
+    """List existing posts."""
+    return render(request, 'feed.html', {'posts': posts})
