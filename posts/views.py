@@ -10,9 +10,6 @@ from posts.forms import PostForm
 # Models
 from posts.models import Post
 
-# Utilities
-# from datetime import datetime
-
 
 @login_required
 def list_posts(request):
