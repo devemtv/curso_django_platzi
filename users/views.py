@@ -8,6 +8,7 @@ from django.contrib.auth import (
 )
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.views.generic import DetailView
 
 # Exceptions
 from django.db.utils import IntegrityError
@@ -18,6 +19,15 @@ from users.models import Profile
 
 # Forms
 from users.forms import ProfileForms
+
+
+class UserDetailView(DetailView):
+    """User detail view."""
+
+    template_name = 'users/detail.html'
+    queryset = User.objects.all()
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
 
 
 def login_view(request):
