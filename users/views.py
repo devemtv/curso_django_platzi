@@ -78,7 +78,7 @@ def signup(request):
 
     return render(request, 'users/signup.html')
 
-
+@login_required
 def update_profile(request):
     profile = request.user.profile
 
