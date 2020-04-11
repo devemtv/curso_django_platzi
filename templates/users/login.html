@@ -10,7 +10,7 @@
     {% if error %}
       <p class="alert alert-danger">{{ error }}</p>
     {% endif %}
-    <form action="{% url 'login'%}" method="POST">
+    <form action="{% url 'users:login'%}" method="POST">
         {% csrf_token %}
         <div class="form-group">
           <input class="form-control" type="text" placeholder="Username" name="username" />
