@@ -15,4 +15,9 @@ urlpatterns = [
         view=views.create_post,
         name='create',
     ),
+    path(
+        route='posts/<str:title>',
+        view=views.PostDetailView.as_view(),
+        name='detail',
+    )
 ]
