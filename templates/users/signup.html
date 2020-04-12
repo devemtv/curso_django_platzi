@@ -10,7 +10,7 @@
         <p class="alert alert-danger">{{ error }}</p>
     {% endif %}
 
-    <form action="{% url 'signup' %}" method="POST">
+    <form action="{% url 'users:signup' %}" method="POST">
         {% csrf_token %}
 
         <div class="form-group">
@@ -18,11 +18,11 @@
         </div>
 
         <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password" name="passwd" required="true" />
+            <input class="form-control" type="password" placeholder="Password" name="password" required="true" />
         </div>
 
         <div class="form-group">
-            <input class="form-control" type="password" placeholder="Password confirmation" name="passwd_confirmation" required="true" />
+            <input class="form-control" type="password" placeholder="Password confirmation" name="password_confirmation" required="true" />
         </div>
 
         <div class="form-group">
